@@ -14,11 +14,11 @@
 statically configure Twisted Web to serve different content at different
 URLs. The goal of this example is to show you how to do this dynamically
 instead. Reading the previous installment if you haven't already is suggested in
-order to get an overview of how URLs are treated when using Twisted Web's <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.html" title="twisted.web.resource">resource</a></code> APIs.</p>
+order to get an overview of how URLs are treated when using Twisted Web's <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.html" title="twisted.web.resource">resource</a></code> APIs.</p>
 
-<p><code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code> (the object which
-associates a listening server port with the HTTP implementation), <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> (a convenient base class
-to use when defining custom pages), and <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.reactor.html" title="twisted.internet.reactor">reactor</a></code> (the object which implements the Twisted
+<p><code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code> (the object which
+associates a listening server port with the HTTP implementation), <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> (a convenient base class
+to use when defining custom pages), and <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.reactor.html" title="twisted.internet.reactor">reactor</a></code> (the object which implements the Twisted
 main loop) return once again:</p>
 
 <pre class="python"><p class="py-linenumber">1
@@ -69,7 +69,7 @@ by creating a suitable instance of this <code>YearPage</code> class:</p>
       <span class="py-src-keyword">return</span> <span class="py-src-variable">YearPage</span>(<span class="py-src-variable">int</span>(<span class="py-src-variable">name</span>))
 </pre>
 
-<p>By implementing <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code> here, we've just defined
+<p>By implementing <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code> here, we've just defined
 how Twisted Web should find children of <code>Calendar</code> instances when
 it's resolving an URL into a resource. This implementation defines all integers
 as the children of <code>Calendar</code> (and punts on error handling, more on
@@ -138,6 +138,6 @@ basically like <code>Calendar.getPage</code>. Here's the full example code:</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

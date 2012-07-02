@@ -13,7 +13,7 @@
 <p>In this example we'll extend dynamic dispatch to return a 404 (not found)
 response when a client requests a non-existent URL.</p>
 
-<p>As in the previous examples, we'll start with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>, and <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.reactor.html" title="twisted.internet.reactor">reactor</a></code> imports:</p>
+<p>As in the previous examples, we'll start with <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>, and <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.reactor.html" title="twisted.internet.reactor">reactor</a></code> imports:</p>
 
 <pre class="python"><p class="py-linenumber">1
 2
@@ -23,7 +23,7 @@ response when a client requests a non-existent URL.</p>
 <span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">internet</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">reactor</span>
 </pre>
 
-<p>Next, we'll add one more import. <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.error.NoResource.html" title="twisted.web.error.NoResource">NoResource</a></code> is one of the pre-defined error
+<p>Next, we'll add one more import. <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.error.NoResource.html" title="twisted.web.error.NoResource">NoResource</a></code> is one of the pre-defined error
 resources provided by Twisted Web. It generates the necessary 404 response code
 and renders a simple html page telling the client there is no such resource.</p>
 
@@ -125,6 +125,6 @@ when a request is made for a URL which cannot be interpreted as a year.</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

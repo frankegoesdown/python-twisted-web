@@ -12,7 +12,7 @@
 
 <p>The previous two examples introduced Twisted Web's session APIs. This
 included accessing the session object, storing state on it, and retrieving it
-later, as well as the idea that the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Session.html" title="twisted.web.server.Session">Session</a></code> object has a lifetime which is tied to
+later, as well as the idea that the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Session.html" title="twisted.web.server.Session">Session</a></code> object has a lifetime which is tied to
 the notional session it represents. This example demonstrates how to exert some
 control over that lifetime and react when it expires.</p>
 
@@ -35,7 +35,7 @@ is 15 minutes. In this example we'll change that to a different value.</p>
 
 <p>To have Twisted Web actually make use of this session class, rather
 than the default, it is also necessary to override
-the <code>sessionFactory</code> attribute of <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>. We could do this with another
+the <code>sessionFactory</code> attribute of <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>. We could do this with another
 subclass, but we could also do it to just one instance
 of <code>Site</code>:</p>
 
@@ -55,7 +55,7 @@ use <code>ShortSession</code> and only last one minute without activity.</p>
 <p>You can have arbitrary functions run when sessions expire,
 too. This can be useful for cleaning up external resources associated
 with the session, tracking usage statistics, and more. This
-functionality is provided via <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Session.notifyOnExpire.html" title="twisted.web.server.Session.notifyOnExpire">Session.notifyOnExpire</a></code>. It accepts a
+functionality is provided via <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Session.notifyOnExpire.html" title="twisted.web.server.Session.notifyOnExpire">Session.notifyOnExpire</a></code>. It accepts a
 single argument: a function to call when the session expires. Here's a
 trivial example which prints a message whenever a session expires:</p>
 
@@ -165,6 +165,6 @@ five seconds to see your session expiration message.</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

@@ -14,8 +14,8 @@
 session object.</p>
 
 <p>As was discussed <a href="session-basics.html" shape="rect">previously</a>, instances
-of <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Session.html" title="twisted.web.server.Session">Session</a></code> last as long as
-the notional session itself does. Each time <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.getSession.html" title="twisted.web.server.Request.getSession">Request.getSession</a></code> is called, if the session
+of <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Session.html" title="twisted.web.server.Session">Session</a></code> last as long as
+the notional session itself does. Each time <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.getSession.html" title="twisted.web.server.Request.getSession">Request.getSession</a></code> is called, if the session
 for the request is still active, then the same <code>Session</code> instance is
 returned as was returned previously. Because of this, <code>Session</code>
 instances can be used to keep other objects around for as long as the session
@@ -63,7 +63,7 @@ several critical pieces interacting here:</p>
     this example. It implements <code>ICounter</code> (again, mostly for
     documentation purposes). It also has a <code>value</code> attribute, as the
     interface declared.</li>
-  <li>The <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.python.components.registerAdapter.html" title="twisted.python.components.registerAdapter">registerAdapter</a></code> call sets up the
+  <li>The <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.python.components.registerAdapter.html" title="twisted.python.components.registerAdapter">registerAdapter</a></code> call sets up the
     relationship between its three arguments so that adaption will do what we
     want in this case.</li>
   <li>Adaption is performed by the expression <code>ICounter(ses)</code>. This
@@ -176,6 +176,6 @@ get past one.</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

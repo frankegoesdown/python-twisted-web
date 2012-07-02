@@ -39,10 +39,10 @@
     single <q>page</q> to be rendered. The interface for making
     Resources is very simple; they must have a method named
     <code>render</code> which takes a single argument, which is the
-    Request object (an instance of <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">twisted.web.server.Request</a></code>). This render
+    Request object (an instance of <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">twisted.web.server.Request</a></code>). This render
     method must return a string, which will be returned to the web
     browser making the request. Alternatively, they can return a
-    special constant, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.NOT_DONE_YET.html" title="twisted.web.server.NOT_DONE_YET">twisted.web.server.NOT_DONE_YET</a></code>, which tells
+    special constant, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.NOT_DONE_YET.html" title="twisted.web.server.NOT_DONE_YET">twisted.web.server.NOT_DONE_YET</a></code>, which tells
     the web server not to close the connection; you must then use
     <code class="python">request.write(data)</code> to render the
     page, and call <code class="python">request.finish()</code>
@@ -62,6 +62,6 @@
   </div>
 
     <p><a href="index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

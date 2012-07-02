@@ -20,7 +20,7 @@ included with Python 2.2 and later.</p>
 
 <h2>Creating a XML-RPC server<a name="auto1"/></h2>
 
-<p>Making a server is very easy - all you need to do is inherit from <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">twisted.web.xmlrpc.XMLRPC</a></code>.
+<p>Making a server is very easy - all you need to do is inherit from <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">twisted.web.xmlrpc.XMLRPC</a></code>.
 You then create methods beginning with <code>xmlrpc_</code>. The methods'
 arguments determine what arguments it will accept from XML-RPC clients.
 The result is what will be returned to the clients.</p>
@@ -30,12 +30,12 @@ types, such as strings, lists and so on (just return a regular python
 integer, etc).  They can also raise exceptions or return Failure instances to indicate an
 error has occurred, or <code>Binary</code>, <code>Boolean</code> or <code>DateTime</code>
 instances (all of these are the same as the respective classes in xmlrpclib. In
-addition, XML-RPC published methods can return <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code> instances whose results are one of the above. This allows
+addition, XML-RPC published methods can return <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code> instances whose results are one of the above. This allows
 you to return results that can't be calculated immediately, such as database queries.
 See the <a href="../../core/howto/defer.html" shape="rect">Deferred documentation</a> for more
 details.</p>
 
-<p><code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">XMLRPC</a></code> instances
+<p><code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">XMLRPC</a></code> instances
 are Resource objects, and they can thus be published using a Site. The
 following example has two methods published via XML-RPC, <code>add(a,
 b)</code> and <code>echo(x)</code>.</p>
@@ -120,9 +120,9 @@ xmlrpclib.Fault: &lt;Fault 123: 'The fault procedure is faulty.'&gt;
 
 </pre>
 
-<p>If the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object is
+<p>If the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object is
 needed by an <code>xmlrpc_*</code> method, it can be made available using
-the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.withRequest.html" title="twisted.web.xmlrpc.withRequest">twisted.web.xmlrpc.withRequest</a></code> decorator.  When
+the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.withRequest.html" title="twisted.web.xmlrpc.withRequest">twisted.web.xmlrpc.withRequest</a></code> decorator.  When
 using this decorator, the method will be passed the request object as the first
 argument, before any XML-RPC parameters.  For example:</p>
 
@@ -279,7 +279,7 @@ E.g. just like sub-handlers you want to divide the implementations into separate
 may not want to introduce <code class="python">XMLRPC.separator</code> in the procedure name.
 In such cases just override the <code class="python">lookupProcedure(self, procedurePath)</code>
 method and return the correct callable.
-Raise <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.NoSuchFunction.html" title="twisted.web.xmlrpc.NoSuchFunction">twisted.web.xmlrpc.NoSuchFunction</a></code> otherwise.</p>
+Raise <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.NoSuchFunction.html" title="twisted.web.xmlrpc.NoSuchFunction">twisted.web.xmlrpc.NoSuchFunction</a></code> otherwise.</p>
 
 <div class="py-listing"><pre><p class="py-linenumber"> 1
  2
@@ -411,7 +411,7 @@ API</a> that specifies three methods in a <code>system</code>
 sub-handler which allow a client to query a server about the server's
 API. Adding Introspection support to
 the <code class="python">Example</code> class is easy using
-the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.XMLRPCIntrospection.html" title="twisted.web.xmlrpc.XMLRPCIntrospection">XMLRPCIntrospection</a></code> class:</p>
+the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.XMLRPCIntrospection.html" title="twisted.web.xmlrpc.XMLRPCIntrospection">XMLRPCIntrospection</a></code> class:</p>
 
 <pre class="python"><p class="py-linenumber"> 1
  2
@@ -529,7 +529,7 @@ from the <code>xmlrpclib</code> way which should be noted:</p>
 </ol>
 
 <p>The interface Twisted presents to XML-RPC client is that of a proxy
-object: <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.Proxy.html" title="twisted.web.xmlrpc.Proxy">twisted.web.xmlrpc.Proxy</a></code>. The
+object: <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.Proxy.html" title="twisted.web.xmlrpc.Proxy">twisted.web.xmlrpc.Proxy</a></code>. The
 constructor for the object receives a URL: it must be an HTTP or HTTPS
 URL. When an XML-RPC service is described, the URL to that service
 will be given there.</p>
@@ -582,11 +582,11 @@ XML-RPC level problem.</p>
 
 <h2>Serving SOAP and XML-RPC simultaneously<a name="auto7"/></h2>
 
-<p><code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">twisted.web.xmlrpc.XMLRPC</a></code> and <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.soap.SOAPPublisher.html" title="twisted.web.soap.SOAPPublisher">twisted.web.soap.SOAPPublisher</a></code> are both <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>s.  So, to serve both XML-RPC and
-SOAP in the one web server, you can use the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.IResource.putChild.html" title="twisted.web.resource.IResource.putChild">putChild</a></code> method of Resource.</p>
+<p><code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.xmlrpc.XMLRPC.html" title="twisted.web.xmlrpc.XMLRPC">twisted.web.xmlrpc.XMLRPC</a></code> and <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.soap.SOAPPublisher.html" title="twisted.web.soap.SOAPPublisher">twisted.web.soap.SOAPPublisher</a></code> are both <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>s.  So, to serve both XML-RPC and
+SOAP in the one web server, you can use the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.IResource.putChild.html" title="twisted.web.resource.IResource.putChild">putChild</a></code> method of Resource.</p>
 
-<p>The following example uses an empty <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">resource.Resource</a></code> as the root resource for
-a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>, and then
+<p>The following example uses an empty <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">resource.Resource</a></code> as the root resource for
+a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">Site</a></code>, and then
 adds <code>/RPC2</code> and <code>/SOAP</code> paths to it.</p>
 
 <div class="py-listing"><pre><p class="py-linenumber"> 1
@@ -646,6 +646,6 @@ Development</a> for more details about Resources.</p>
   </div>
 
     <p><a href="index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>
