@@ -24,7 +24,7 @@ response after a fixed delay. We will expand that resource so that as soon as
 the client connection is lost, the delayed event is cancelled and the response
 is never generated.</p>
 
-<p>The feature this example relies on is provided by another <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> method: <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.http.Request.notifyFinish.html" title="twisted.web.http.Request.notifyFinish">notifyFinish</a></code>. This method returns a new
+<p>The feature this example relies on is provided by another <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> method: <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.http.Request.notifyFinish.html" title="twisted.web.http.Request.notifyFinish">notifyFinish</a></code>. This method returns a new
 Deferred which will fire with <code>None</code> if the request is successfully
 responded to or with an error otherwise - for example if the connection is lost
 before the response is sent.</p>
@@ -85,7 +85,7 @@ sure <code>_responseFailed</code> is called if appropriate.</p>
 the delayed call object in order to cancel it, we passed that object
 to <code>addErrback</code>. Any additional arguments passed
 to <code>addErrback</code> (or <code>addCallback</code>) will be
-passed along to the errback after the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.python.failure.Failure.html" title="twisted.python.failure.Failure">Failure</a></code> instance which is always
+passed along to the errback after the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.python.failure.Failure.html" title="twisted.python.failure.Failure">Failure</a></code> instance which is always
 passed as the first argument. Passing <code>call</code> here means it
 will be passed to <code>_responseFailed</code>, where it is expected
 and required.</p>
@@ -142,6 +142,6 @@ server logs. Success!</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

@@ -26,7 +26,7 @@ creating <code>HTTPChannel</code> instances to parse the HTTP request,
 and begin the object lookup process. They contain the root Resource,
 the resource which represents the URL <code>/</code> on the site.</li>
 
-<li><a href="#resources" shape="rect">Resource</a> objects represent a single URL segment. The <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.IResource.html" title="twisted.web.resource.IResource">IResource</a></code> interface describes the methods a Resource object must implement in order to participate in the object publishing process.</li>
+<li><a href="#resources" shape="rect">Resource</a> objects represent a single URL segment. The <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.IResource.html" title="twisted.web.resource.IResource">IResource</a></code> interface describes the methods a Resource object must implement in order to participate in the object publishing process.</li>
 
 <li><a href="#trees" shape="rect">Resource trees</a> are arrangements of Resource objects into a Resource tree. Starting at the root Resource object, the tree of Resource objects defines the URLs which will be valid.</li>
 
@@ -209,7 +209,7 @@ site:</p>
 
 <p>
 
-The <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>
+The <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>
 class, which is usually what one's Resource classes subclass, has a
 convenient default implementation
 of <code class="python">render</code>. It will call a method
@@ -217,7 +217,7 @@ named <code class="python">self.render_METHOD</code>
 where <q>METHOD</q> is whatever HTTP method was used to request this
 resource. Examples: request_GET, request_POST, request_HEAD, and so
 on. It is recommended that you have your resource classes
-subclass <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>
+subclass <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code>
 and implement <code class="python">render_METHOD</code> methods as
 opposed to <code class="python">render</code> itself. Note that for
 certain resources, <code class="python">request_POST =
@@ -242,7 +242,7 @@ arguments passed to the resource regardless of whether they used GET
 <p>A proxy is a general term for a server that functions as an intermediary
 between clients and other servers.</p>
 
-<p>Twisted supports two main proxy variants: a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.Proxy.html" title="twisted.web.proxy.Proxy">Proxy</a></code> and a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ReverseProxy.html" title="twisted.web.proxy.ReverseProxy">ReverseProxy</a></code>.</p>
+<p>Twisted supports two main proxy variants: a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.Proxy.html" title="twisted.web.proxy.Proxy">Proxy</a></code> and a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ReverseProxy.html" title="twisted.web.proxy.ReverseProxy">ReverseProxy</a></code>.</p>
 
 <h4>Proxy</h4>
 
@@ -277,14 +277,14 @@ local access restrictions to web content.</p>
 <code>localhost:8080</code> as a proxy. After doing so, when browsing the web
 all requests will go through this proxy.</p>
 
-<p><code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.Proxy.html" title="twisted.web.proxy.Proxy">Proxy</a></code> inherits
-from <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.http.HTTPChannel.html" title="twisted.web.http.HTTPChannel">http.HTTPChannel</a></code>. Each client
-request to the proxy generates a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ProxyRequest.html" title="twisted.web.proxy.ProxyRequest">ProxyRequest</a></code> from the proxy to the destination
+<p><code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.Proxy.html" title="twisted.web.proxy.Proxy">Proxy</a></code> inherits
+from <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.http.HTTPChannel.html" title="twisted.web.http.HTTPChannel">http.HTTPChannel</a></code>. Each client
+request to the proxy generates a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ProxyRequest.html" title="twisted.web.proxy.ProxyRequest">ProxyRequest</a></code> from the proxy to the destination
 server on behalf of the client. <code>ProxyRequest</code> uses
-a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ProxyClientFactory.html" title="twisted.web.proxy.ProxyClientFactory">ProxyClientFactory</a></code> to create
-an instance of the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ProxyClient.html" title="twisted.web.proxy.ProxyClient">ProxyClient</a></code>
+a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ProxyClientFactory.html" title="twisted.web.proxy.ProxyClientFactory">ProxyClientFactory</a></code> to create
+an instance of the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ProxyClient.html" title="twisted.web.proxy.ProxyClient">ProxyClient</a></code>
 protocol for the connection. <code>ProxyClient</code> inherits
-from <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.http.HTTPClient.html" title="twisted.web.http.HTTPClient">http.HTTPClient</a></code>. Subclass <code>ProxyRequest</code> to
+from <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.http.HTTPClient.html" title="twisted.web.http.HTTPClient">http.HTTPClient</a></code>. Subclass <code>ProxyRequest</code> to
 customize the way requests are processed or logged.</p>
 
 <h4>ReverseProxyResource</h4>
@@ -320,11 +320,11 @@ also a <code>ReverseProxy</code> family of classes
 in <code>twisted.web.proxy</code> mirroring those of the <code>Proxy</code>
 family:</p>
 
-<p>Like <code>Proxy</code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ReverseProxy.html" title="twisted.web.proxy.ReverseProxy">ReverseProxy</a></code> inherits
+<p>Like <code>Proxy</code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ReverseProxy.html" title="twisted.web.proxy.ReverseProxy">ReverseProxy</a></code> inherits
 from <code>http.HTTPChannel</code>. Each client request to the reverse proxy
-generates a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ReverseProxyRequest.html" title="twisted.web.proxy.ReverseProxyRequest">ReverseProxyRequest</a></code> to the destination
-server. Like <code>ProxyRequest</code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ReverseProxyRequest.html" title="twisted.web.proxy.ReverseProxyRequest">ReverseProxyRequest</a></code> uses a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ProxyClientFactory.html" title="twisted.web.proxy.ProxyClientFactory">ProxyClientFactory</a></code> to create an instance of
-the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.proxy.ProxyClient.html" title="twisted.web.proxy.ProxyClient">ProxyClient</a></code> protocol for
+generates a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ReverseProxyRequest.html" title="twisted.web.proxy.ReverseProxyRequest">ReverseProxyRequest</a></code> to the destination
+server. Like <code>ProxyRequest</code>, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ReverseProxyRequest.html" title="twisted.web.proxy.ReverseProxyRequest">ReverseProxyRequest</a></code> uses a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ProxyClientFactory.html" title="twisted.web.proxy.ProxyClientFactory">ProxyClientFactory</a></code> to create an instance of
+the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.proxy.ProxyClient.html" title="twisted.web.proxy.ProxyClient">ProxyClient</a></code> protocol for
 the connection.</p>
 
 <p>Additional examples of proxies and reverse proxies can be found in
@@ -338,7 +338,7 @@ variable called application. Usually,
 a <code>twisted.application.internet.TCPServer</code>
 instance will be used to make the application listen on a TCP port
 (80, in case direct web serving is desired), with the listener being
-a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">twisted.web.server.Site</a></code>. The resulting file
+a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Site.html" title="twisted.web.server.Site">twisted.web.server.Site</a></code>. The resulting file
 can then be run with <code class="shell">twistd
 -y</code>. Alternatively a reactor object can be used directly to make
 a runnable script.</p>
@@ -656,13 +656,13 @@ started it in and running the command:</p>
 <a name="ResourceScripts" shape="rect"/>
 <h3>Resource Scripts<a name="auto16"/></h3>
 
-<p> A Resource script is a Python file ending with the extension <code>.rpy</code>, which is required to create an instance of a (subclass of a) <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">twisted.web.resource.Resource</a></code>. </p>
+<p> A Resource script is a Python file ending with the extension <code>.rpy</code>, which is required to create an instance of a (subclass of a) <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">twisted.web.resource.Resource</a></code>. </p>
 
 <p> Resource scripts have 3 special variables: </p>
 
 <ul>
   <li> <code class="py-src-identifier">__file__</code>: The name of the .rpy file, including the full path.  This variable is automatically defined and present within the namespace.  </li>
-  <li> <code class="py-src-identifier">registry</code>: An object of class <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.static.Registry.html" title="twisted.web.static.Registry">static.Registry</a></code>. It can be used to access and set persistent data keyed by a class.</li>
+  <li> <code class="py-src-identifier">registry</code>: An object of class <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.static.Registry.html" title="twisted.web.static.Registry">static.Registry</a></code>. It can be used to access and set persistent data keyed by a class.</li>
   <li> <code class="py-src-identifier">resource</code>: The variable which must be defined by the script and set to the resource instance that will be used to render the page. </li>
 </ul>
 
@@ -752,7 +752,7 @@ not itself part of Twisted.
 <a name="SpreadableWebServers" shape="rect"/>
 <h3>Spreadable Web Servers<a name="auto18"/></h3>
 
-<p> One of the most interesting applications of Twisted Web is the distributed webserver; multiple servers can all answer requests on the same port, using the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.spread.html" title="twisted.spread">twisted.spread</a></code> package for <q>spreadable</q> computing.  In two different directories, run the commands:  </p>
+<p> One of the most interesting applications of Twisted Web is the distributed webserver; multiple servers can all answer requests on the same port, using the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.spread.html" title="twisted.spread">twisted.spread</a></code> package for <q>spreadable</q> computing.  In two different directories, run the commands:  </p>
 
 <pre class="shell" xml:space="preserve">
 % twistd web --user
@@ -983,16 +983,16 @@ ServerName example.com
 <h2>Rewriting URLs<a name="auto22"/></h2>
 
 <p>Sometimes it is convenient to modify the content of
-the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object
+the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object
 before passing it on. Because this is most often used to rewrite
 either the URL, the similarity to Apache's <code>mod_rewrite</code>
-has inspired the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.rewrite.html" title="twisted.web.rewrite">twisted.web.rewrite</a></code>
+has inspired the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.rewrite.html" title="twisted.web.rewrite">twisted.web.rewrite</a></code>
 module. Using this module is done via wrapping a resource with
-a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.rewrite.RewriterResource.html" title="twisted.web.rewrite.RewriterResource">twisted.web.rewrite.RewriterResource</a></code> which
+a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.rewrite.RewriterResource.html" title="twisted.web.rewrite.RewriterResource">twisted.web.rewrite.RewriterResource</a></code> which
 then has rewrite rules. Rewrite rules are functions which accept a
 request object, and possible modify it. After all rewrite rules run,
 the child resolution chain continues as if the wrapped resource,
-rather than the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.rewrite.RewriterResource.html" title="twisted.web.rewrite.RewriterResource">RewriterResource</a></code>, was the child.</p>
+rather than the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.rewrite.RewriterResource.html" title="twisted.web.rewrite.RewriterResource">RewriterResource</a></code>, was the child.</p>
 
 <p>Here is an example, using the only rule currently supplied by Twisted
 itself:</p>
@@ -1003,7 +1003,7 @@ itself:</p>
 
 <p>This causes the URL <code>/~foo/bar.html</code> to be treated
 like <code>/users/foo/bar.html</code>. If done after setting
-default's <code>users</code> child to a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.distrib.UserDirectory.html" title="twisted.web.distrib.UserDirectory">distrib.UserDirectory</a></code>, it gives a
+default's <code>users</code> child to a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.distrib.UserDirectory.html" title="twisted.web.distrib.UserDirectory">distrib.UserDirectory</a></code>, it gives a
 configuration similar to the classical configuration of web server,
 common since the first NCSA servers.</p>
 
@@ -1054,8 +1054,8 @@ are frustrated after merely 10 seconds.</p>
 <h2>As-Is Serving<a name="auto24"/></h2>
 
 <p>Sometimes, you want to be able to send headers and status
-directly. While you can do this with a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.script.ResourceScript.html" title="twisted.web.script.ResourceScript">ResourceScript</a></code>, an easier way is to
-use <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.static.ASISProcessor.html" title="twisted.web.static.ASISProcessor">ASISProcessor</a></code>.
+directly. While you can do this with a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.script.ResourceScript.html" title="twisted.web.script.ResourceScript">ResourceScript</a></code>, an easier way is to
+use <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.static.ASISProcessor.html" title="twisted.web.static.ASISProcessor">ASISProcessor</a></code>.
 Use it by, for example, adding it as a processor for
 the <code>.asis</code> extension. Here is a sample file:</p>
 
@@ -1069,6 +1069,6 @@ Hello world
 </div>
 
     <p><a href="index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

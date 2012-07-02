@@ -11,8 +11,8 @@
 <span/>
 
 <p>The goal of this example is to show you how to
-use <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.wsgi.WSGIResource.html" title="twisted.web.wsgi.WSGIResource">WSGIResource</a></code>,
-another existing <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> subclass, to
+use <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.wsgi.WSGIResource.html" title="twisted.web.wsgi.WSGIResource">WSGIResource</a></code>,
+another existing <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> subclass, to
 serve <a href="http://www.python.org/dev/peps/pep-0333/" shape="rect">WSGI applications</a>
 in a Twisted Web server.</p>
 
@@ -68,7 +68,7 @@ global reactor. That's why <code>WSGIResource</code> requires you to
 pass the reactor to it.</p>
 
 <p>The second parameter passed to <code>WSGIResource</code> is
-a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.python.threadpool.ThreadPool.html" title="twisted.python.threadpool.ThreadPool">ThreadPool</a></code>. <code>WSGIResource</code>
+a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.python.threadpool.ThreadPool.html" title="twisted.python.threadpool.ThreadPool">ThreadPool</a></code>. <code>WSGIResource</code>
 uses this to actually call the application object passed in to it. To keep this
 example short, we're passing in the reactor's internal threadpool here, letting
 us skip its creation and shutdown-time destruction. For finer control over how
@@ -101,7 +101,7 @@ WSGI containers work.</p>
 
 <p>Up to the point where the <code>WSGIResource</code> instance defined here
 exists in the resource hierarchy, the normal resource traversal rules
-apply: <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code>
+apply: <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code>
 will be called to handle each segment. Once the <code>WSGIResource</code> is
 encountered, though, that process stops and all further URL handling is the
 responsibility of the WSGI application. This application does nothing with the
@@ -120,6 +120,6 @@ $ twistd -n web --wsgi foo.application
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

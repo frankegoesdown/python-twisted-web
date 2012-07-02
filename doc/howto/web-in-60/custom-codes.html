@@ -10,7 +10,7 @@
     <div class="content">
 <span/>
 
-<p>The previous example introduced <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.error.NoResource.html" title="twisted.web.error.NoResource">NoResource</a></code>, a Twisted Web error resource which
+<p>The previous example introduced <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.error.NoResource.html" title="twisted.web.error.NoResource">NoResource</a></code>, a Twisted Web error resource which
 responds with a 404 (not found) code. This example will cover the APIs
 that <code>NoResource</code> uses to do this so that you can generate your own
 custom response codes as desired.</p>
@@ -31,13 +31,13 @@ was defined in previous examples. The fact that it has a response code other
 than 200 doesn't change anything else about its role. This will require using
 the request object, though, which none of the previous examples have done.</p>
 
-<p>The <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object has
+<p>The <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.server.Request.html" title="twisted.web.server.Request">Request</a></code> object has
 shown up in a couple of places, but so far we've ignored it. It is a parameter
-to the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code>
+to the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.getChild.html" title="twisted.web.resource.Resource.getChild">getChild</a></code>
 API as well as to render methods such as <code>render_GET</code>. As you might
 have suspected, it represents the request for which a response is to be
 generated. Additionally, it also represents the response being generated. In
-this example we're going to use its <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.http.Request.setResponseCode.html" title="twisted.web.http.Request.setResponseCode">setResponseCode</a></code> method to - you guessed
+this example we're going to use its <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.http.Request.setResponseCode.html" title="twisted.web.http.Request.setResponseCode">setResponseCode</a></code> method to - you guessed
 it - set the response's status code.</p>
 
 <pre class="python"><p class="py-linenumber">1
@@ -111,6 +111,6 @@ the server indeed sent back a 402 response code.</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

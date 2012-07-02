@@ -19,7 +19,7 @@ and <a href="http://www.clearsilver.net/" shape="rect">clearsilver</a>.  You can
 any of these libraries in your Twisted Web application, either by running them
 as <a href="web-in-60/wsgi.html" shape="rect">WSGI applications</a> or by calling your
 preferred templating system's APIs to produce their output as strings, and then
-writing those strings to <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.request.Request.write.html" title="twisted.web.request.Request.write">Request.write</a></code>.
+writing those strings to <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.request.Request.write.html" title="twisted.web.request.Request.write">Request.write</a></code>.
 </p>
 <p>Before we begin explaining how to use it, I'd like to stress that you
 don't <i>need</i> to use Twisted's templating system if you prefer some other
@@ -33,18 +33,18 @@ nothing to do with the fact that we use our own.</p>
 </p>
 <h2>twisted.web.template - Why And How you Might Want to Use It<a name="auto1"/></h2>
 <p>
-Twisted includes a templating system, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>.  This can be convenient for Twisted
+Twisted includes a templating system, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>.  This can be convenient for Twisted
 applications that want to produce some basic HTML for a web interface without an
 additional dependency.
 </p>
 <p>
 <code>twisted.web.template</code> also includes
-support for <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s, so
-you can incrementally render the output of a page based on the results of <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s that your application
+support for <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s, so
+you can incrementally render the output of a page based on the results of <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s that your application
 has returned.  This feature is fairly unique among templating libraries.
 </p>
 <p>
-In <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>, templates are XHTML files
+In <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>, templates are XHTML files
 which also contain a special namespace for indicating dynamic portions of the
 document. For example:
 </p>
@@ -59,10 +59,10 @@ document. For example:
 &lt;/body&gt;
 &lt;/html&gt;
 </pre><div class="caption">template example - <a href="listings/template-1.xml"><span class="filename">listings/template-1.xml</span></a></div></div>
-The basic unit of templating is <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">twisted.web.template.Element</a></code>. An Element is given a way of
+The basic unit of templating is <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">twisted.web.template.Element</a></code>. An Element is given a way of
 loading a bit of markup like the above example, and knows how to
 correlate <code>render</code> attributes within that markup to Python methods
-exposed with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.renderer.html" title="twisted.web.template.renderer">twisted.web.template.renderer</a></code>:
+exposed with <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.renderer.html" title="twisted.web.template.renderer">twisted.web.template.renderer</a></code>:
 <div class="py-listing"><pre><p class="py-linenumber"> 1
  2
  3
@@ -75,10 +75,12 @@ exposed with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.
 10
 11
 12
+13
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'template-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'template-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">header</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -89,8 +91,8 @@ exposed with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.
         <span class="py-src-keyword">return</span> <span class="py-src-variable">tag</span>(<span class="py-src-string">'Footer.'</span>)
 </pre><div class="caption">element example - <a href="listings/element_1.py"><span class="filename">listings/element_1.py</span></a></div></div>
 In order to combine the two, we must render the element.  For this simple
-example, we can use the <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.flattenString.html" title="twisted.web.template.flattenString">flattenString</a></code> API, which will convert a
-single template object - such as an <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">Element</a></code> - into a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code> which fires with a single string,
+example, we can use the <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.flattenString.html" title="twisted.web.template.flattenString">flattenString</a></code> API, which will convert a
+single template object - such as an <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">Element</a></code> - into a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code> which fires with a single string,
 the HTML output of the rendering process.
 <div class="py-listing"><pre><p class="py-linenumber">1
 2
@@ -103,14 +105,14 @@ the HTML output of the rendering process.
     <span class="py-src-keyword">print</span> <span class="py-src-variable">output</span>
 <span class="py-src-variable">flattenString</span>(<span class="py-src-variable">None</span>, <span class="py-src-variable">ExampleElement</span>()).<span class="py-src-variable">addCallback</span>(<span class="py-src-variable">renderDone</span>)
 </pre><div class="caption">rendering snippet - <a href="listings/render_1.py"><span class="filename">listings/render_1.py</span></a></div></div>
-<p>This short program cheats a little bit; we know that there are no <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s in the template which
+<p>This short program cheats a little bit; we know that there are no <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>s in the template which
 require the reactor to eventually fire; therefore, we can simply add a callback
 which outputs the result.  Also, none of the <code>renderer</code> functions
 require the <code>request</code> object, so it's acceptable to
 pass <code>None</code> through here.  (The 'request' object here is used only to
 relay information about the rendering process to each renderer, so you may
 always use whatever object makes sense for your application.  Note, however,
-that renderers from library code may require an <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.iweb.IRequest.html" title="twisted.web.iweb.IRequest">IRequest</a></code>.)</p>
+that renderers from library code may require an <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.iweb.IRequest.html" title="twisted.web.iweb.IRequest">IRequest</a></code>.)</p>
 <p>
 If you run it yourself, you can see that it produces the following output:
 </p>
@@ -125,9 +127,9 @@ If you run it yourself, you can see that it produces the following output:
 &lt;/body&gt;
 &lt;/html&gt;
 </pre><div class="caption">rendering output 1 - <a href="listings/output-1.html"><span class="filename">listings/output-1.html</span></a></div></div>
-The third parameter to a renderer method is a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code> object which represents the XML element
-with the <code>t:render</code> attribute in the template. Calling a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code> adds children to the element
-in the DOM, which may be strings, more <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code>s, or other renderables such as <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">Element</a></code>s.
+The third parameter to a renderer method is a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code> object which represents the XML element
+with the <code>t:render</code> attribute in the template. Calling a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code> adds children to the element
+in the DOM, which may be strings, more <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Tag.html" title="twisted.web.template.Tag">Tag</a></code>s, or other renderables such as <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.Element.html" title="twisted.web.template.Element">Element</a></code>s.
 For example, to make the header and footer bold:
 <div class="py-listing"><pre><p class="py-linenumber"> 1
  2
@@ -141,10 +143,12 @@ For example, to make the header and footer bold:
 10
 11
 12
+13
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>, <span class="py-src-variable">tags</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'template-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'template-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">header</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -185,10 +189,12 @@ adding children:
 10
 11
 12
+13
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>, <span class="py-src-variable">tags</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'template-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'template-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">header</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -216,7 +222,7 @@ And this would produce the following page:
 <p>
 Calling a tag mutates it, it and returns the tag itself, so you can pass it
 forward and call it multiple times if you have multiple children or attributes
-to add to it. <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> also exposes some
+to add to it. <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> also exposes some
 convenient objects for building more complex markup structures from within
 renderer methods in the <code>tags</code> object.  In the examples above, we've
 only used <code>tags.p</code> and <code>tags.b</code>, but there should be a <code>tags.x</code> for each <em>x</em> which is a valid HTML tag.  There may be
@@ -263,10 +269,12 @@ sense when you see the code:
  9
 10
 11
+12
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'slots-attributes-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'slots-attributes-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">person_profile</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -309,10 +317,12 @@ cloning <code>tag</code> in your renderer:</p>
 14
 15
 16
+17
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>, <span class="py-src-variable">flattenString</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">WidgetsElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'iteration-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'iteration-1.xml'</span>))
 
     <span class="py-src-variable">widgetData</span> = [<span class="py-src-string">'gadget'</span>, <span class="py-src-string">'contraption'</span>, <span class="py-src-string">'gizmo'</span>, <span class="py-src-string">'doohickey'</span>]
 
@@ -335,7 +345,7 @@ cloning <code>tag</code> in your renderer:</p>
 <p>This renderer works because a renderer can return anything that can be
 rendered, not just <code>tag</code>. In this case, we define a generator, which
 returns a thing that is iterable. We also could have returned
-a <code>list</code>. Anything that is iterable will be rendered by <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> rendering each item in it. In
+a <code>list</code>. Anything that is iterable will be rendered by <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> rendering each item in it. In
 this case, each item is a copy of the tag the renderer received, each filled
 with the name of a widget.</p>
 
@@ -381,11 +391,13 @@ new <code>Element</code> subclass.</p>
 24
 25
 26
+27
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> (
     <span class="py-src-variable">XMLFile</span>, <span class="py-src-variable">TagLoader</span>, <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">flattenString</span>)
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">WidgetsElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'subviews-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'subviews-1.xml'</span>))
 
     <span class="py-src-variable">widgetData</span> = [<span class="py-src-string">'gadget'</span>, <span class="py-src-string">'contraption'</span>, <span class="py-src-string">'gizmo'</span>, <span class="py-src-string">'doohickey'</span>]
 
@@ -451,10 +463,12 @@ content in without any surrounding &quot;container&quot; tag. For example:
 10
 11
 12
+13
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'transparent-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'transparent-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">renderer1</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -475,7 +489,7 @@ world
 
 <h2>Quoting<a name="auto7"/></h2>
 
-<code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> will quote any strings that place
+<code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code> will quote any strings that place
 into the DOM.  This provides protection against <a href="http://en.wikipedia.org/wiki/Cross-site_scripting" shape="rect">XSS attacks</a>, in
 addition to just generally making it easy to put arbitrary strings onto a web
 page, without worrying about what they might have in them.  This can easily be
@@ -495,10 +509,12 @@ and '&quot;', which is special in attribute values):
 10
 11
 12
+13
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">web</span>.<span class="py-src-variable">template</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">Element</span>, <span class="py-src-variable">renderer</span>, <span class="py-src-variable">XMLFile</span>
+<span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">python</span>.<span class="py-src-variable">filepath</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">FilePath</span>
 
 <span class="py-src-keyword">class</span> <span class="py-src-identifier">ExampleElement</span>(<span class="py-src-parameter">Element</span>):
-    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-string">'template-1.xml'</span>)
+    <span class="py-src-variable">loader</span> = <span class="py-src-variable">XMLFile</span>(<span class="py-src-variable">FilePath</span>(<span class="py-src-string">'template-1.xml'</span>))
 
     @<span class="py-src-variable">renderer</span>
     <span class="py-src-keyword">def</span> <span class="py-src-identifier">header</span>(<span class="py-src-parameter">self</span>, <span class="py-src-parameter">request</span>, <span class="py-src-parameter">tag</span>):
@@ -526,12 +542,12 @@ browser just as you returned them from your Python method:
 
 <h2>Deferreds<a name="auto8"/></h2>
 
-Finally, a simple demonstration of Deferred support, the unique feature of <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>.  Simply put, any renderer may
+Finally, a simple demonstration of Deferred support, the unique feature of <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.html" title="twisted.web.template">twisted.web.template</a></code>.  Simply put, any renderer may
 return a Deferred which fires with some template content instead of the template
-content itself.  As shown above, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.flattenString.html" title="twisted.web.template.flattenString">flattenString</a></code> will return a Deferred that
+content itself.  As shown above, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.flattenString.html" title="twisted.web.template.flattenString">flattenString</a></code> will return a Deferred that
 fires with the full content of the string.  But if there's a lot of content, you
 might not want to wait before starting to send some of it to your HTTP client:
-for that case, you can use <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.flatten.html" title="twisted.web.template.flatten">flatten</a></code>.
+for that case, you can use <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.flatten.html" title="twisted.web.template.flatten">flatten</a></code>.
 It's difficult to demonstrate this directly in a browser-based application;
 unless you insert very long delays before firing your Deferreds, it just looks
 like your browser is instantly displaying everything.  Here's an example that
@@ -622,7 +638,7 @@ This demonstrates that part of the output (everything up to
 But once it hits the Deferred, <code>WaitForIt</code>'s rendering needs to pause
 until <code>.callback(...)</code> is called on that Deferred.  You can see that
 no further output is produced until the message indicating that the Deferred is
-being fired is complete.  By returning Deferreds and using <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.template.flatten.html" title="twisted.web.template.flatten">flatten</a></code>, you can avoid buffering large
+being fired is complete.  By returning Deferreds and using <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.template.flatten.html" title="twisted.web.template.flatten">flatten</a></code>, you can avoid buffering large
 amounts of data.
 
 <h2>A Brief Note on Formats and DOCTYPEs<a name="auto9"/></h2>
@@ -683,6 +699,6 @@ templating, but more straightforward for new users.
 </div>
 
     <p><a href="index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>

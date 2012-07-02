@@ -10,11 +10,11 @@
     <div class="content">
 <span/>
 
-<p>The previous example had a <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> that generates its response
+<p>The previous example had a <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.web.resource.Resource.html" title="twisted.web.resource.Resource">Resource</a></code> that generates its response
 asynchronously rather than immediately upon the call to its render
 method. Though it was a useful demonstration of the <code>NOT_DONE_YET</code>
 feature of Twisted Web, the example didn't reflect what a realistic application
-might want to do. This example introduces <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>, the Twisted class which is used
+might want to do. This example introduces <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.html" title="twisted.internet.defer.Deferred">Deferred</a></code>, the Twisted class which is used
 to provide a uniform interface to many asynchronous events, and shows you an
 example of using a <code>Deferred</code>-returning API to generate an
 asynchronous response to a request in Twisted Web.</p>
@@ -28,11 +28,11 @@ object once it does exist. It also needs a way to define how to handle
 errors in the creation or acquisition of that object. These two needs
 are satisfied by the <i>callbacks</i> and <i>errbacks</i> of
 a <code>Deferred</code>. Callbacks are added to
-a <code>Deferred</code> with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.addCallback.html" title="twisted.internet.defer.Deferred.addCallback">Deferred.addCallback</a></code>; errbacks
-are added with <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.addErrback.html" title="twisted.internet.defer.Deferred.addErrback">Deferred.addErrback</a></code>. When the
-object finally does exist, it is passed to <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.callback.html" title="twisted.internet.defer.Deferred.callback">Deferred.callback</a></code> which passes it
+a <code>Deferred</code> with <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.addCallback.html" title="twisted.internet.defer.Deferred.addCallback">Deferred.addCallback</a></code>; errbacks
+are added with <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.addErrback.html" title="twisted.internet.defer.Deferred.addErrback">Deferred.addErrback</a></code>. When the
+object finally does exist, it is passed to <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.callback.html" title="twisted.internet.defer.Deferred.callback">Deferred.callback</a></code> which passes it
 on to the callback added with <code>addCallback</code>. Similarly, if
-an error occurs, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.defer.Deferred.errback.html" title="twisted.internet.defer.Deferred.errback">Deferred.errback</a></code> is called and
+an error occurs, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.defer.Deferred.errback.html" title="twisted.internet.defer.Deferred.errback">Deferred.errback</a></code> is called and
 the error is passed along to the errback added
 with <code>addErrback</code>. Second, the events that make
 asynchronous code actually work often take many different,
@@ -47,7 +47,7 @@ of <code>DelayedResource</code> which uses a <code>Deferred</code>-based delay
 API. It does exactly the same thing as the <a href="asynchronous.html" shape="rect">previous
 example</a>. Only the implementation is different.</p>
 
-<p>First, the example must import that new API that was just mentioned, <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.task.deferLater.html" title="twisted.internet.task.deferLater">deferLater</a></code>:</p>
+<p>First, the example must import that new API that was just mentioned, <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.task.deferLater.html" title="twisted.internet.task.deferLater">deferLater</a></code>:</p>
 
 <pre class="python"><p class="py-linenumber">1
 </p><span class="py-src-keyword">from</span> <span class="py-src-variable">twisted</span>.<span class="py-src-variable">internet</span>.<span class="py-src-variable">task</span> <span class="py-src-keyword">import</span> <span class="py-src-variable">deferLater</span>
@@ -78,8 +78,8 @@ the code is identical to the previous version:</p>
 </pre>
 
 <p>Next we need to define the render method. Here's where things
-change a bit. Instead of using <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.interfaces.IReactorTime.callLater.html" title="twisted.internet.interfaces.IReactorTime.callLater">callLater</a></code>,
-We're going to use <code class="API"><a href="http://twistedmatrix.com/documents/12.0.0/api/twisted.internet.task.deferLater.html" title="twisted.internet.task.deferLater">deferLater</a></code> this
+change a bit. Instead of using <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.interfaces.IReactorTime.callLater.html" title="twisted.internet.interfaces.IReactorTime.callLater">callLater</a></code>,
+We're going to use <code class="API"><a href="http://twistedmatrix.com/documents/12.1.0/api/twisted.internet.task.deferLater.html" title="twisted.internet.task.deferLater">deferLater</a></code> this
 time. <code>deferLater</code> accepts a reactor, delay (in seconds, as
 with <code>callLater</code>), and a function to call after the delay
 to produce that elusive object discussed in the description
@@ -168,6 +168,6 @@ have a resource that does something useful.</p>
 </div>
 
     <p><a href="../index.html">Index</a></p>
-    <span class="version">Version: 12.0.0</span>
+    <span class="version">Version: 12.1.0</span>
   </body>
 </html>
